@@ -1,0 +1,59 @@
+
+<html>
+<body bgcolor="wheat">
+<h1>Restuarent Management System</h1>
+Username: <input type="text" length="20" id="uname"><br><br>
+Password: <input type="password" id="pwd" length="12"><br><br>
+<button type="button">Login </button>
+</body>
+</html>
+
+
+<html>
+<body bgcolor="wheat">
+<h1><center>Welcome to Restaurant</center></h1><br>
+<h2>Today's Menu</h2>
+<h2>Starters</h2>
+<select>
+<option value="items">Items & Price</option>
+<option value="g65">Gobi65  130</option>
+<option value="a65">Aloo65  120</option>
+<option value="basket">VegBasket 150</option>
+<option value="cl">Chicken Lollipop   180</option>
+</select>
+<select>
+<option>Quantity</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select><br>
+<h2>Soups</h2>
+<select>
+<option value="i1">Items & price</option>
+<option value="sp">Tomato soup   80</option>
+<option value="cp">Chicken soup   100</option>
+<option value="bp">Bone soup   120</option>
+</select>
+<select>
+<option>Quantity</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select><br>
+<h2>Rice Items</h2>
+<select>
+<option value="items">Items & Price</option>
+<option value="gr">GobiRice  150</option>
+<option value="jr">JeeraRice  130</option>
+<option value="br">Veg Biriyani 180</option>
+<option value="cbr">Chicken Biriyani   220</option>
+</select>
+<select>
+<option>Quantity</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select><br><br><br>
+<button type="button">Place Order</button>
+</body>
+</html>
