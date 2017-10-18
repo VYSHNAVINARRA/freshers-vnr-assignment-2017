@@ -1,0 +1,158 @@
+
+<html>
+<body bgcolor="wheat">
+<h1>Restuarent Management System</h1>
+Username: <input type="text" length="20" id="uname"><br><br>
+Password: <input type="password" id="pwd" length="12"><br><br>
+<button type="button">Login </button>
+</body>
+</html>
+
+
+<html>
+<body bgcolor="wheat">
+<h1><center>Welcome to Restaurant</center></h1><br>
+<h2>Today's Menu</h2>
+<h2>Starters</h2>
+<select>
+<option value="items">Items & Price</option>
+<option value="g65">Gobi65  130</option>
+<option value="a65">Aloo65  120</option>
+<option value="basket">VegBasket 150</option>
+<option value="cl">Chicken Lollipop   180</option>
+</select>
+<select>
+<option>Quantity</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select><br>
+<h2>Soups</h2>
+<select>
+<option value="i1">Items & price</option>
+<option value="sp">Tomato soup   80</option>
+<option value="cp">Chicken soup   100</option>
+<option value="bp">Bone soup   120</option>
+</select>
+<select>
+<option>Quantity</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select><br>
+<h2>Rice Items</h2>
+<select>
+<option value="items">Items & Price</option>
+<option value="gr">GobiRice  150</option>
+<option value="jr">JeeraRice  130</option>
+<option value="br">Veg Biriyani 180</option>
+<option value="cbr">Chicken Biriyani   220</option>
+</select>
+<select>
+<option>Quantity</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select><br><br><br>
+<button type="button">Place Order</button>
+</body>
+</html>
+
+
+ import java.io.*;
+class Bill
+{
+ String item[]={"A","B","C","D","E","F","G","H","I","J"};
+ double rate[]={1,2,3,4,5,6,7,8,9,10};
+ String order[]=new String[10];
+ double amt[]=new double[10];
+ String ans;
+ int plates[]=new int[10];
+ int i,n=0,no,x=0;
+ BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+ Bill()
+ {
+    
+ }  
+
+ public void putOrder()throws IOException
+ {
+     System.out.println("**********************************************");
+      System.out.println("Hotel Paradise - MENU CARD");
+      System.out.println("*********************************************");
+      System.out.println("Item No.         Item            Rate/plate");
+      for(i=0;i< 10;i++)
+      {
+                System.out.println((i+1)+ ":                "+item[i]+"------------------"+rate[i]);
+      }
+            System.out.println("You have to order at least 2 items. Enter item number to place order\n");  
+          
+     while(true)
+     {
+          if(x==10)
+          break;
+         System.out.println("Enter item number:");
+         no=Integer.parseInt(br.readLine());
+         order[x]=item[no-1];
+         amt[x]=rate[no-1];
+         System.out.println("How many plates?:");
+         no=Integer.parseInt(br.readLine());
+         plates[x]=no;
+         x++;
+         if(x>1)
+         {
+             System.out.println("Any More Item ?(Y/N):");
+        ans=br.readLine().toUpperCase();
+             if(ans.equals("N"))
+             break;
+    }
+ }
+ showBill();
+
+}
+private void showBill() throws IOException
+{
+double bamt=0,b;
+  System.out.println("You have ordered\n");
+   System.out.println("Item       Rate         No. of Plates");
+  for(i=0;i< x;i++)
+  {
+       System.out.println((i+1)+":"+order[i]+"---"+amt[i]+"---"+plates[i]);
+    }
+    while(true)
+    {
+         if(x< 2)
+         break;
+         System.out.println("Want to cancell any item (Y/N):");
+         ans=br.readLine().toUpperCase();
+         if(ans.equals("N"))
+         break;
+         System.out.println("Which item to cancell, enter item number:");
+         no=Integer.parseInt(br.readLine());
+         for(i=no-1;i< x-1;i++)
+         {
+              order[i]=order[i+1];
+              amt[i]=amt[i+1];
+              plates[i]=plates[i+1];
+            }
+            x--;
+        }
+        System.out.println("Cash Memo\n");
+        System.out.println("*****************************************************************");
+        System.out.println("Item          No. of plates      Rate           Amount\n");
+         System.out.println("***************************************************************");
+         for (i=0;i< x;i++)
+         {
+               System.out.print(order[i]+ "             "+plates[i]+ "              "+ amt[i]+ "                      ");
+       
+        b=plates[i]*amt[i];
+         System.out.println(b);
+         bamt=bamt+b;
+        }
+         System.out.println("Bill Amount Rs.                                     "+bamt);
+          System.out.println("*******************");
+          bamt=bamt+bamt*.125;
+          System.out.println("Total Amount including service charge @ 12.5% Rs.                   "+bamt);
+          
+}
+}
